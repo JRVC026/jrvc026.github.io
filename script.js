@@ -1,14 +1,17 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-  // Check if the countdown end date is stored in local storage
-  let countdownEndDate = localStorage.getItem('countdownEndDate');
-  
-  if (countdownEndDate) {
-    // If countdown end date exists, start the countdown
-    startCountdown(new Date(countdownEndDate));
-  } else {
-    // If countdown end date doesn't exist, show the date selection form
-    document.getElementById('date-form').style.display = 'block';
-  }
+  // Check if the countdown end date is stored in the text file
+  fetch('countdown.txt')
+    .then(response => response.text())
+    .then(data => {
+      if (data.trim() !== '') {
+        // If the text file has a date, display the countdown
+        const countdownEndDate = new Date(data);
+        startCountdown(countdownEndDate);
+      } else {
+        // If the text file is empty, show the date selection form
+        document.getElementById('date-form').style.display = 'block';
+      }
+    });
 });
 
 document.getElementById('submit-btn').addEventListener('click', (event) => {
@@ -34,8 +37,15 @@ document.getElementById('submit-btn').addEventListener('click', (event) => {
   // Generate a random date between the minimum and maximum dates
   const randomDate = new Date(minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime()));
 
-  // Save the random date to local storage
-  localStorage.setItem('countdownEndDate', randomDate);
+  // Save the random date to the text file
+  const fileContent = new Blob([randomDate], { type: 'text/plain' });
+  const fileURL = URL.createObjectURL(fileContent);
+
+  // Trigger the file download to save the content
+  const downloadLink = document.createElement('a');
+  downloadLink.href = fileURL;
+  downloadLink.download = 'countdown.txt';
+  downloadLink.click();
 
   // Start the countdown
   startCountdown(randomDate);
@@ -46,6 +56,8 @@ document.getElementById('submit-btn').addEventListener('click', (event) => {
 
 function startCountdown(endDate) {
   const countdownElement = document.getElementById('countdown');
+  const congratulationsElement = document.getElementById('congratulations');
+  const newTimerBtn = document.getElementById('new-timer-btn');
 
   // Update the countdown every second
   const countdownInterval = setInterval(() => {
@@ -56,21 +68,37 @@ function startCountdown(endDate) {
       // Clear the countdown interval when the countdown is finished
       clearInterval(countdownInterval);
 
-      // Remove the countdown end date from local storage
-      localStorage.removeItem('countdownEndDate');
+      // Display the "Congratulations" message and new timer button
+      countdownElement.style.display = 'none';
+      congratulationsElement.style.display = 'block';
+      newTimerBtn.style.display = 'block';
+    } else {
+      // Calculate the remaining time
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-      // Show the date selection form again
-      document.getElementById('date-form').style.display = 'block';
+      // Display the countdown
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
-
-      // Calculate the remaining time (continued)
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-    // Display the countdown
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
   }, 1000);
 }
+
+document.getElementById('new-timer-btn').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    // Delete the entry in the text file
+    const emptyContent = new Blob([], { type: 'text/plain' });
+    const fileURL = URL.createObjectURL(emptyContent);
+
+    // Trigger the file download to remove the content
+    const downloadLink = document.createElement('a');
+    downloadLink.href = fileURL;
+    downloadLink.download = 'countdown.txt';
+    downloadLink.click();
+
+    // Reload the page
+    location.reload();
+  });
+
