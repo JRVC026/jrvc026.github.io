@@ -38,20 +38,20 @@ document.getElementById('submit-btn').addEventListener('click', (event) => {
   const randomDate = new Date(minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime()));
 
   // Save the random date to the text file
-  const fileContent = new Blob([randomDate], { type: 'text/plain' });
-  const fileURL = URL.createObjectURL(fileContent);
+  fetch('countdown.txt', {
+    method: 'PUT',
+    body: randomDate.toISOString(),
+  })
+    .then(() => {
+      // Start the countdown
+      startCountdown(randomDate);
 
-  // Trigger the file download to save the content
-  const downloadLink = document.createElement('a');
-  downloadLink.href = fileURL;
-  downloadLink.download = 'countdown.txt';
-  downloadLink.click();
-
-  // Start the countdown
-  startCountdown(randomDate);
-
-  // Hide the date selection form
-  document.getElementById('date-form').style.display = 'none';
+      // Hide the date selection form
+      document.getElementById('date-form').style.display = 'none';
+    })
+    .catch(error => {
+      console.error('Error saving date to text file:', error);
+    });
 });
 
 function startCountdown(endDate) {
@@ -81,24 +81,21 @@ function startCountdown(endDate) {
 
       // Display the countdown
       countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-  }, 1000);
+    }, 1000);
 }
 
 document.getElementById('new-timer-btn').addEventListener('click', (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    // Delete the entry in the text file
-    const emptyContent = new Blob([], { type: 'text/plain' });
-    const fileURL = URL.createObjectURL(emptyContent);
-
-    // Trigger the file download to remove the content
-    const downloadLink = document.createElement('a');
-    downloadLink.href = fileURL;
-    downloadLink.download = 'countdown.txt';
-    downloadLink.click();
-
-    // Reload the page
-    location.reload();
-  });
-
+  // Delete the entry in the text file
+  fetch('countdown.txt', {
+    method: 'DELETE'
+  })
+    .then(() => {
+      // Reload the page
+      location.reload();
+    })
+    .catch(error => {
+      console.error('Error deleting date from text file:', error);
+    });
+});
