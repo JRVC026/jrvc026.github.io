@@ -1,28 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
-input[type=number] {
-    width: 50px;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#content {
-    margin: 0 auto;
-    max-width: 600px;
+h1 {
+  text-align: center;
+  color: #333;
 }
 
-.countdown {
-    font-size: 36px;
-    margin-bottom: 20px;
+#countdown {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.release-date {
-    font-size: 24px;
-    margin-bottom: 10px;
+#countdown-timer {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-button {
-    font-size: 18px;
-    padding: 10px 20px;
+#current-release, #initial-release, #latest-release {
+  color: #777;
+  margin-bottom: 5px;
 }
+
+#controls {
+  text-align: center;
+}
+
+/* Add additional styles as needed */
