@@ -1,38 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Countdown Timer</title>
-  <style>
-    #countdown {
-      font-size: 48px;
-      text-align: center;
-      margin-top: 200px;
-    }
-    #date-form {
-      text-align: center;
-      margin-top: 50px;
-    }
-  </style>
+    <title>Chastity Countdown Timer</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div id="countdown"></div>
-  <div id="date-form">
-    <label for="min-date">Minimum Date and Time:</label>
-    <input type="datetime-local" id="min-date" required>
-    <br><br>
-    <label for="max-date">Maximum Date and Time:</label>
-    <input type="datetime-local" id="max-date" required>
-    <br><br>
-    <button id="submit-btn">Submit</button>
-  </div>
-  
-  <div id="congratulations" style="display: none;">
-    <h2>Congratulations! You are Free!</h2>
-  </div>
-
-  <button id="new-timer-btn" style="display: none;">New Timer</button>
-
-
-  <script src="script.js"></script>
+    <div id="content"></div>
+    <script src="script.js"></script>
 </body>
 </html>
