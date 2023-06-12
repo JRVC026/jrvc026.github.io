@@ -14,10 +14,12 @@
     .timer {
       text-align: center;
       width: 90%;
+      max-width: 400px;
     }
 
     .message {
       margin-top: 20px;
+      display: none;
     }
   </style>
 </head>
@@ -60,7 +62,8 @@
       // If the countdown is finished, stop the interval and display the message
       if (timeDifference <= 0) {
         clearInterval(countdownInterval);
-        countdownElement.innerHTML = '';
+        countdownElement.style.display = 'none';
+        messageElement.style.display = 'block';
         messageElement.innerHTML = '<h2>Congratulations! You are free for now!</h2>';
       }
     }
