@@ -42,7 +42,6 @@
 </head>
 <body>
   <div class="timer">
-    <h1>Countdown Timer</h1>
     <div id="countdown"></div>
     <div class="message" id="message"></div>
   </div>
@@ -51,20 +50,20 @@
     // Set the countdown time
     const countdownTime = new Date('2023-06-26T16:00:00Z').getTime();
 
-    // Update the countdown every second
+    // Update the countdown every millisecond
     const countdownElement = document.getElementById('countdown');
     const messageElement = document.getElementById('message');
-    const countdownInterval = setInterval(updateCountdown, 1000);
+    const countdownInterval = setInterval(updateCountdown, 1);
 
     function updateCountdown() {
       const currentTime = Date.now();
       const timeDifference = countdownTime - currentTime;
 
-      // Calculate the remaining seconds
-      const remainingSeconds = Math.floor(timeDifference / 1000);
+      // Calculate the remaining milliseconds
+      const remainingMilliseconds = timeDifference;
 
       // Display the countdown
-      countdownElement.innerHTML = `<h2>${remainingSeconds} seconds</h2>`;
+      countdownElement.innerHTML = `<h2>${remainingMilliseconds}</h2>`;
 
       // If the countdown is finished, stop the interval and display the message
       if (timeDifference <= 0) {
