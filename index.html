@@ -63,7 +63,8 @@
       const remainingMilliseconds = timeDifference;
 
       // Display the countdown
-      countdownElement.innerHTML = `<h2>${remainingMilliseconds}</h2>`;
+      countdownElement.innerHTML = `<h2>${Math.floor(remainingMilliseconds / 1000)}:${(remainingMilliseconds % 1000).toString().padStart(3, '0')}</h2>`;
+
 
       // If the countdown is finished, stop the interval and display the message
       if (timeDifference <= 0) {
