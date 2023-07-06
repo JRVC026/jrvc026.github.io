@@ -23,32 +23,48 @@
       align-items: center;
     }
 
-    .timer h1,
-    .timer h2 {
-      font-size: 8vw;
-      margin: 0;
-    }
-
-    .message {
+    .timer table {
       margin-top: 20px;
-      display: none;
+      border-collapse: collapse;
     }
 
-    .message h2 {
-      font-size: 8vw;
-      margin: 0;
+    .timer table td {
+      padding: 10px;
+      text-align: right;
+    }
+
+    .timer table td.label {
+      text-align: left;
+    }
+
+    .timer table td.label:after {
+      content: ':';
+      margin-left: 5px;
     }
   </style>
 </head>
 <body>
   <div class="timer">
-    <div id="countdown"></div>
+    <table id="countdown">
+      <tr>
+        <td id="hours" class="number"></td>
+        <td class="label">Hours</td>
+      </tr>
+      <tr>
+        <td id="minutes" class="number"></td>
+        <td class="label">Minutes</td>
+      </tr>
+      <tr>
+        <td id="seconds" class="number"></td>
+        <td class="label">Seconds</td>
+      </tr>
+    </table>
     <div class="message" id="message"></div>
   </div>
 
   <script>
     // Set the countdown time
-    const countdownTime = new Date('2023-07-19T16:00:00Z');;
+    const countdownTime = new Date('2023-07-19T16:00:00Z');
 
     // Update the countdown every millisecond
     const countdownElement = document.getElementById('countdown');
@@ -59,12 +75,16 @@
       const currentTime = Date.now();
       const timeDifference = countdownTime - currentTime;
 
-      // Calculate the remaining milliseconds
-      const remainingMilliseconds = timeDifference;
+      // Calculate the remaining time components
+      const remainingSeconds = Math.floor(timeDifference / 1000);
+      const hours = Math.floor(remainingSeconds / 3600);
+      const minutes = Math.floor((remainingSeconds % 3600) / 60);
+      const seconds = remainingSeconds % 60;
 
-      // Display the countdown
-      countdownElement.innerHTML = `<h2>${Math.floor(remainingMilliseconds / 1000)}:${(remainingMilliseconds % 1000).toString().padStart(3, '0')}</h2>`;
-
+      // Display the countdown in the table
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 
       // If the countdown is finished, stop the interval and display the message
       if (timeDifference <= 0) {
