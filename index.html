@@ -36,12 +36,12 @@
     .timer table td.label {
       text-align: left;
       font-weight: bold;
-      font-size: 100px;
+      font-size: 20vw;
     }
 
     .timer table td .number {
       color: red;
-      font-size: 100px;
+      font-size: 20vw;
     }
   </style>
 </head>
@@ -49,15 +49,15 @@
   <div class="timer">
     <table id="countdown">
       <tr>
-        <td id="hours" class="number"></td>
+        <td class="number"><span id="hours"></span></td>
         <td class="label">Hours</td>
       </tr>
       <tr>
-        <td id="minutes" class="number"></td>
+        <td class="number"><span id="minutes"></span></td>
         <td class="label">Minutes</td>
       </tr>
       <tr>
-        <td id="seconds" class="number"></td>
+        <td class="number"><span id="seconds"></span></td>
         <td class="label">Seconds</td>
       </tr>
     </table>
