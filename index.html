@@ -1,101 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Countdown Timer</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    .timer {
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .timer table {
-      margin-top: 20px;
-      border-collapse: collapse;
-    }
-
-    .timer table td {
-      padding: 10px;
-      text-align: right;
-    }
-
-    .timer table td.label {
-      text-align: left;
-      font-weight: bold;
-      font-size: 6vw;
-    }
-
-    .number {
-      color: red;
-      font-size: 9vw;
-    }
-  </style>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
 </head>
-<body>
-  <div class="timer">
-    <table id="countdown">
-      <tr>
-        <td class="number"><span id="hours"></span></td>
-        <td class="label">Hours</td>
-      </tr>
-      <tr>
-        <td class="number"><span id="minutes"></span></td>
-        <td class="label">Minutes</td>
-      </tr>
-      <tr>
-        <td class="number"><span id="seconds"></span></td>
-        <td class="label">Seconds</td>
-      </tr>
-    </table>
-    <div class="message" id="message"></div>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="id.jpg" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>Randel Carpio</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>IT Specialist</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Manila, PH</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>carpio.johnrandel@gmail.com</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>09183415477</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Programming Skills</b></p>
+          <p>HTML / CSS</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
+          </div>
+          <p>PHP</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+              <div class="w3-center w3-text-white">80%</div>
+            </div>
+          </div>
+          <p>C#</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+          </div>
+          <p>Python</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+          </div>
+          <br>
+
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-code fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Certifications</h2>
+        
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Information Technology Specialist - Networking</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2022</h6>
+          <p>
+			<ul>
+				<li>Certified in the fundamentals of IT networking issues such as network access, IP connectivity, and IP services</li>
+				<li>Proficient in configuring routers and switches, implementing network security, troubleshooting network problems, and using network monitoring tools</li>
+			</ul>
+		  </p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Information Technology Specialist - Device Configuration and Management</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2022</h6>
+          <p>
+			<ul>
+			  <li>Certified in the fundamentals of IT networking issues such as network access, IP connectivity, and IP services</li>
+			  <li>Proficient in configuring routers and switches, implementing network security, troubleshooting network problems, and using network monitoring tools</li>
+			</ul>
+		  </p>
+		  <br>
+        </div>
+      </div>
+
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Bachelor of Science in Information Technology</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Nov 2018 - <span class="w3-tag w3-teal w3-round">Present</span></h6>
+          <p>
+		  <ul>
+			<li>Completed coursework in programming languages such as Java, Python, and C++</li>
+			<li>Learned how to design and develop software applications</li>
+			<li>Studied database management systems and data structures</li>
+			<li>Gained experience in web development and design</li>
+			<li>Learned about computer networking and network security</li>
+			<li>Gained experience in managing computer systems including troubleshooting and maintenance</li>
+		  </ul>
+		  </p>
+          <hr>
+        </div>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
   </div>
+  
+  <!-- End Page Container -->
+</div>
 
-  <script>
-    // Set the countdown time
-    const countdownTime = new Date('2023-07-19T16:00:00Z');
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>Find me on social media.</p>
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
 
-    // Update the countdown every millisecond
-    const countdownElement = document.getElementById('countdown');
-    const messageElement = document.getElementById('message');
-    const countdownInterval = setInterval(updateCountdown, 1);
-
-    function updateCountdown() {
-      const currentTime = Date.now();
-      const timeDifference = countdownTime - currentTime;
-
-      // Calculate the remaining time components
-      const remainingSeconds = Math.floor(timeDifference / 1000);
-      const hours = Math.floor(remainingSeconds / 3600);
-      const minutes = Math.floor((remainingSeconds % 3600) / 60);
-      const seconds = remainingSeconds % 60;
-
-      // Display the countdown in the table
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-      // If the countdown is finished, stop the interval and display the message
-      if (timeDifference <= 0) {
-        clearInterval(countdownInterval);
-        countdownElement.style.display = 'none';
-        messageElement.style.display = 'block';
-        messageElement.innerHTML = '<h2>Congratulations! You are free for now!</h2>';
-      }
-    }
-  </script>
 </body>
 </html>
